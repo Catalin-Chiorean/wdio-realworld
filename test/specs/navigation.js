@@ -4,19 +4,12 @@ describe('Homepage', function () {
     browser.url('./');
 
     // Get the title of the homepage, should be 'Conduit'
-    console.log(browser.getTitle());
-    if (browser.getTitle() !== 'Conduit') {
-      // throw an error explaining what went wrong
-      throw new Error('Title of the homepage should be "Conduit"');
-    }
+    expect(browser).toHaveTitle('Conduit');
 
-    // Click the 'Sign In' navigation link
+    // Click the 'Sign in' navigation link
     $('=Sign in').click();
-
+    
     // Get the URL of the sign in page. It should include 'login'
-    console.log(browser.getUrl());
-    if (browser.getUrl() !== 'http://localhost:8080/login') {
-      throw new Error('URL of "login" page should be correct');
-    }
+    expect(browser).toHaveUrl('/login', { containing: true });
   });
 });
